@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles/globalStyles.css">
+    <link rel="stylesheet" href="./pages/login/index.css">
+    <title>Petinfo - Login</title>
+</head>
+
+<body>
+    <main>
+        <section>
+            <h2>Petinfo</h2>
+            <h2><span>Amor</span> e <span>carinho</span> por meio do conhecimento</h2>
+            <p>Todas as informações para melhorar a vida do seu pet em um só lugar</p>
+            <figure>
+                <div class="position_cat-dogs">
+                    <div class="cat_dog">
+                        <img class="img_little" src="./src/Rectangle 2.svg" alt="">
+                        <img class="img_little" src="./src/Rectangle 3.svg" alt="">
+                    </div>
+                    <div>
+                        <img src="./src/Rectangle 4.svg" alt="">
+                    </div>
+                </div>
+                <img class="img_big" src="./src/Rectangle 5.svg" alt="">
+            </figure>
+        </section>
+        <aside class="login_area">
+            <h3>Login</h3>
+            <form class="form">
+                <label for="11">Email</label>
+                <input id="email" type="text" placeholder="Digite aqui o seu email">
+                <label for="12">Senha</label>
+                <input id="password" type="password" placeholder="Digite aqui a sua senha">
+                <span class="w error">A senha está incorreta</span>
+                <button class="btn_acess">Acessar</button>
+            </form>
+            <div class="click_here">
+                <span class="still_not">Ainda não possui conta?</span>
+                <span class="click_below">Clicando no botão abaixo, você pode se cadastrar rapidamente</span>
+            </div>
+            <button class="btn_register">Casdatrar</button>
+        </aside>
+    </main>
+    <script type="module" src="/api.js"></script>
+    <script type="module" src="/pages/login/index.js"></script>
+</body>
+
+</html>

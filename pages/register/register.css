@@ -22,11 +22,13 @@ p {
   font-weight: 400;
   color: var(--gray300);
   line-height: 24px;
+  width: 320px;
+  height: 48px;
 }
 
 figure {
   display: flex;
-  flex-direction: row;
+  flex-direction: row-reverse;
   justify-content: start;
   gap: 18px;
 }
@@ -56,21 +58,21 @@ main {
   justify-content: space-between;
   gap: 40px;
   width: 47vw;
+  flex-direction: row-reverse;
 }
 aside {
-  height: 600px;
   border: solid 2px var(--gray600);
   border-radius: 4px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  padding: 44px 24px;
+  padding: 14px 24px;
   gap: 26px;
   position: absolute;
   width: 368px;
-  height: 600px;
-  left: 895px;
+  height: 648px;
+  left: 464px;
   top: 92px;
 }
 aside > h3 {
@@ -84,7 +86,7 @@ label {
   line-height: 24px;
   margin-top: 15px;
 }
-.form {
+.form_user {
   display: flex;
   flex-direction: column;
 }
@@ -106,9 +108,9 @@ input {
   font-size: 14px;
 }
 .w {
-    color: transparent;
+  color: transparent;
 }
-.form {
+.form_password {
   display: flex;
   flex-direction: column;
 }
@@ -155,4 +157,58 @@ input {
   border: 1px solid var(--gray600);
   border-radius: 4px;
   cursor: pointer;
+}
+.login_area_div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 313px;
+}
+.login_area_div > button {
+  background-color: transparent;
+  font-weight: 500;
+  font-size: 14px;
+  padding: 7px 12px;
+  border: solid 1px var(--gray600);
+  border-radius: 4px;
+  cursor: pointer;
+}
+.sucess {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 21px 32px;
+  gap: 17px;
+  position: absolute;
+  width: 441px;
+  height: 125px;
+  left: 1415px;
+  top: 775px;
+  background: #fcfeff;
+  box-shadow: 0px 4px 30px -12px rgba(0, 0, 0, 0.8);
+  border-radius: 4px;
+}
+.sucess > p {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 150%;
+  width: 340px;
+}
+.sucess > p span {
+  color: #364fc7;
+}
+.sucess > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 260px;
+}
+.sucess div > span {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  color: #087f5b;
+}
+.hidden {
+  display: none;
 }

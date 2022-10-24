@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"rel="stylesheet">
+    <link rel="stylesheet" href="../../styles/globalStyles.css">
+    <link rel="stylesheet" href="./register.css">
+    <title>Petinfo - Register</title>
+</head>
+
+<body>
+    <main>
+        <section>
+            <h2>Petinfo</h2>
+            <h2><span>Ooooooba!</span></h2>
+            <p>Agora vamos poder contribuir para o bem estar do seu pet por meio do conhecimento</p>
+            <figure>
+                <div class="position_cat-dogs">
+                    <div class="cat_dog">
+                        <img class="img_little" src="../../src/register/petlogin3.svg" alt="">
+                        <img class="img_little" src="../../src/register/petlogin2.svg" alt="">
+                    </div>
+                    <div>
+                        <img src="../../src/register/petlogin1.svg" alt="">
+                    </div>
+                </div>
+                <img class="img_big" src="../../src/register/petlogin4.svg" alt="">
+            </figure>
+        </section>
+        <aside class="login_area">
+            <div class="login_area_div">
+                <h3>Cadastro</h3>
+                <button id="buttonBack">Voltar para o login</button>
+            </div>
+            <form>
+                <div class="form_user">
+                    <label for="11">Usuário</label>
+                    <input id="username" type="text" placeholder="Digite aqui o seu usuário">
+                </div>
+                <div class="form_user">
+                    <label for="12">Email</label>
+                    <input id="email" type="email" placeholder="Digite aqui o seu Email">
+                </div>
+                <div class="form_user">
+                    <label for="13">Link da foto de perfil</label>
+                    <input id="avatar" type="url" placeholder="Insira o link aqui">
+                </div>
+                <div class="form_password">
+                    <label for="14">Senha</label>
+                    <input id="password" type="password" placeholder="Digite aqui a sua senha">
+                    <span class="w error">A senha está incorreta</span>
+                    <button class="btn_acess">Casdatrar</button>
+                </div>
+            </form>
+
+            <button class="btn_register"id="btnBack">Voltar para o login</button>
+        </aside>
+    </main>
+    <div class="sucess hidden">
+        <div>
+            <img src="../../src/modal/Group 17.svg" alt="">
+            <span>Sua conta foi criada com sucesso!</span>
+        </div>
+        <p>Agora você pode acessar os conteúdos utilizando seu usuário e senha na página de login: <span>Acessar página de login</span></p>
+    </div>
+    <script type="module" src="/pages/register/register.js"></script>
+</body>
+</html>
