@@ -46,7 +46,7 @@ async function login(body) {
         console.log(response)
         localStorage.setItem('User',JSON.stringify(response) || '')
         setTimeout(() => {
-            // window.location.replace("/pages/home/home.html")
+            window.location.replace("/pages/home/home.html")
         },4000)
         
     } else {
