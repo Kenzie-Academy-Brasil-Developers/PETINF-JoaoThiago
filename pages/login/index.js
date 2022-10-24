@@ -40,3 +40,18 @@ function getBack (){
 }
 getBack()
 
+function btnSpinner() {
+  const spinner = document.querySelector(".btn_acess")
+  spinner.addEventListener('click', (evt) => {
+    spinner.innerHTML = ''
+
+    const imgSpinner = document.createElement('img')
+    imgSpinner.src = '/src/home/spinner.svg'
+    imgSpinner.classList = 'spinnerSplendi'
+    
+    spinner.append(imgSpinner)
+
+  })
+}
+btnSpinner()
+export {btnSpinner}

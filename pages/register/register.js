@@ -44,7 +44,6 @@ eventRegister()
 
 
 
-
 function backToLoginBtn() {
     const buttonBack = document.querySelector('#buttonBack')
     const btnBack = document.querySelector('#btnBack')

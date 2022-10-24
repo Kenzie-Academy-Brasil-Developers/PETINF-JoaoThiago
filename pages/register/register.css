@@ -212,3 +212,15 @@ input {
 .hidden {
   display: none;
 }
+.spinnerSplendi {
+  animation: gira 1.5s infinite;
+}
+
+@keyframes gira {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

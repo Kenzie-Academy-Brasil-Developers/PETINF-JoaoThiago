@@ -1,4 +1,8 @@
+import { btnSpinner } from "./pages/login/index.js"
+
+
 const baseUrl = 'http://localhost:3333'
+
 
 async function createUser(body) {
     try {
@@ -11,6 +15,7 @@ async function createUser(body) {
     })
     if(request.ok){
         const response = await request.json()
+        btnSpinner()
         const modalCall = document.querySelector('.sucess')
         modalCall.classList.remove('hidden')
         setTimeout(() => {
@@ -37,11 +42,13 @@ async function login(body) {
     })
     if(request.ok){
         const response = await request.json()
+        btnSpinner()
+        console.log(response)
         localStorage.setItem('User',JSON.stringify(response) || '')
         setTimeout(() => {
-            window.location.replace("/pages/home/home.html")
+            // window.location.replace("/pages/home/home.html")
         },4000)
-        console.log(response)
+        
     } else {
         const messageError = document.querySelector('.error')
         messageError.classList.remove('w')      
