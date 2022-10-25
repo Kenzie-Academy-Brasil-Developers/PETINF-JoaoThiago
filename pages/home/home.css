@@ -309,6 +309,7 @@ header > div > img {
   border: solid 1px transparent;
   color: white;
 }
+
 .btn_cancel {
   width: 105px;
   height: 38px;
@@ -326,11 +327,15 @@ header > div > img {
   cursor: pointer;
   border: 1px solid #0007;
   font-weight: 500;
+  cursor: pointer;
+  background-color: #0b2191;
+  transition: ease-in-out 0.2s;
 }
 .btn_cancel:hover {
   color: black;
   cursor: pointer;
   border: 1px solid #364fc7;
+  transition: ease-in-out 0.2s;
   font-weight: 500;
 }
 form p {
@@ -370,4 +375,16 @@ form p {
 .red {
   width: 189px;
   background: #C73650;
+}
+.postBtn:hover {
+  cursor: pointer;
+  background-color: #0b2191;
+  transition: ease-in-out 0.2s;
+}
+input {
+  width: 100%;
+  height: 50px;
+}
+textarea {
+  resize: none;
 }
