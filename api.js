@@ -131,3 +131,23 @@ export async function editPost(body, id) {
     }
 }
 
+export async function deletePost(id) {
+
+    try {
+        const localS = getLocalStorage()
+        const request = await fetch(`${baseUrl}/posts/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localS.token}`
+            },
+        })
+        if(request.ok){
+            window.location.reload()
+        }
+        const resp = await request.json()       
+        return resp
+    } catch (err) {
+        console.log(err)
+    }
+}

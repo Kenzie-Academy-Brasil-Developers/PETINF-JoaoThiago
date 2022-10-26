@@ -1,5 +1,5 @@
 import { getLocalStorage } from "../../scripts/localStorage.js";
-import { createPosts, getPosts, getUser } from '../../api.js'
+import { createPosts, getPosts, getUser, editPost, deletePost } from '../../api.js'
 async function renderName() {
     const user = getLocalStorage()
     return user
@@ -87,7 +87,6 @@ async function renderizarPost() {
     const userName = loggedUser.map(e => e.username)
     publi.map(({ user, createdAt, title, content, id }) => {
         const userData = user
-
         if (userName.includes(userData.username)) {
             ul.insertAdjacentHTML('afterend', `
             <li>
@@ -97,14 +96,14 @@ async function renderizarPost() {
                     <p class="userName">${userData.username}<span> | ${new Date(createdAt).toLocaleString()} </span></p>
                 </figure>
                 <form id="formBtn" class="btns">
-                    <button id="${id}" class="btn_edit">Editar</button>
-                    <button class="btn_del">Excluir</button>
+                    <button  id='edit-${id}' class="btn_edit">Editar</button>
+                    <button id='delet-${id}' class="btn_del">Excluir</button>
                 </form>
             </div>
             <div class="li_post">
                 <h2> ${title} </h2>
                 <p> ${content} </p>
-                <button>Acessar publicação</button>
+                <button id='view-${id}'>Acessar publicação</button>
             </div>
         </li>
             `)
@@ -123,58 +122,114 @@ async function renderizarPost() {
             <div class="li_post">
                 <h2> ${title} </h2>
                 <p> ${content} </p>
-                <button>Acessar publicação</button>
+                <button id='view-${id}'>Acessar publicação</button>
             </div>
         </li>
         `)
         }
-        showModalEditPost(id)
-
+        showModalEditPost(title, content, id)
+        showModalDelete(id)
+        viewPost(user, createdAt, title, content, id)
     })
 }
 renderizarPost()
 
-async function showModalEditPost(id) {
+async function showModalEditPost(title, content, id) {
 
-    const form = document.querySelector('#formBtn')
-    if(form !== null){
-        form.addEventListener('click', (e)=> {
-            e.preventDefault()
-        })
-    }
-    const btnEdit = document.querySelector(`#${id}`)
-    console.log(btnEdit)
-    if(btnEdit !== null) {
+    const btnEdit = document.querySelector(`#edit-${id}`)
+    if (btnEdit !== null) {
         btnEdit.addEventListener('click', (e) => {
             e.preventDefault()
             editModal.classList.remove('hidden')
+
+            const inputTitle = document.querySelector('#postEditTitle')
+            const inputContent = document.querySelector('#postEditContent')
+            inputTitle.innerText = title
+            inputContent.innerText = content
+
+            const saveEdit = document.querySelector('.btnSaveEdit')
+            console.log(saveEdit)
+            saveEdit.addEventListener('click', async (evt) => {
+                evt.preventDefault()
+                const body = {
+                    title: inputTitle.value,
+                    content: inputContent.value,
+                }
+                await editPost(body, id)
+                window.location.reload()
+            })
+
+        })
+        const editModal = document.querySelector('#editPost')
+        const escEdit = document.querySelector('#escEdit')
+        const closeModalEdit = document.querySelector('#closeEdit')
+
+        escEdit.addEventListener('click', () => {
+            editModal.classList.add('hidden')
+
+        })
+        closeModalEdit.addEventListener('click', () => {
+            editModal.classList.add('hidden')
+
         })
     }
-    const inputTitle = document.querySelector('#postEditTitle')
-    const inputContent = document.querySelector('#postEditContent')
-    const editModal = document.querySelector('#editPost')
-    const escEdit = document.querySelector('#escEdit')
-    const closeModalEdit = document.querySelector('#closeEdit')
-    const saveEdit = document.querySelector('#btnSaveEdit')
+}
 
-    escEdit.addEventListener('click', () => {
-        editModal.classList.add('hidden')
+function showModalDelete(id) {
 
-    })
-    closeModalEdit.addEventListener('click', () => {
-        editModal.classList.add('hidden')
+    const deleteModal = document.querySelector('#deletePost')
+    const deleteBtn = document.querySelector(`#delet-${id}`)
+    const closeModalx = document.querySelector('.delete_esc_btn')
+    const closeModalCancel = document.querySelector('.delete_esc_btn_cancel')
+    const yesBtn = document.querySelector('.yesBtn')
 
-    })
+    if (deleteBtn !== null) {
+        deleteBtn.addEventListener('click', (evt) => {
+            evt.preventDefault()
+            deleteModal.classList.remove('hidden')
+            yesBtn.addEventListener('click', (evt) => {
+                evt.preventDefault()
+                deletePost(id)
+            })
+        })
+        closeModalx.addEventListener('click', (evt) => {
+            evt.preventDefault()
+            deleteModal.classList.add('hidden')
+        })
+        closeModalCancel.addEventListener('click', (evt) => {
+            evt.preventDefault()
+            deleteModal.classList.add('hidden')
+        })
 
-    saveEdit.addEventListener('click', () => {
-        console.log('ok')
 
-
-
-    })
+    }
 
 
 }
+function viewPost(user, createdAt, title, content, id) {
+
+    const modalSee = document.querySelector('#showPost')
+    const modalSeeUserInfo = document.querySelector('.userInfo')
+    const modalSeeUserInfoTime = document.querySelector('.userInfo_time')
+    const modalSeeH2 = document.querySelector('.modal_h2')
+    const modalSeeText = document.querySelector('.modal_post_text')
+    const btnSee = document.getElementById(`view-${id}`)
+    const btnEscape = document.querySelector('.btnEscape')
+    
+    if (btnSee !== null) {
+        btnSee.addEventListener('click', (evt) => {
+            evt.preventDefault()
+            modalSee.classList.remove('hidden')
+            modalSeeUserInfo.innerText = user
+            modalSeeUserInfoTime.innerText = createdAt
+            modalSeeH2.innerText = title
+            modalSeeText.innerText = content
+            btnEscape.addEventListener('click',evt=> modalSee.classList.add('hidden'))
+        })
+    }
+}
+
+
 renderName()
 renderUser()
 showModalCreatePost()
