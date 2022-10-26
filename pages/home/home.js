@@ -51,29 +51,30 @@ function showModalCreatePost() {
     const btnCloseModal = document.querySelector('#btn_closeModal')
     const btnCloseModall = document.querySelector('#btn_closeModall')
     const btnPub = document.querySelector('#btn_Save')
+    const modalCreate = document.querySelector('#newPost')
 
     btnPost.addEventListener('click', () => {
-        const modalCreate = document.querySelector('#newPost')
         modalCreate.classList.remove('hidden')
-    })
-    btnCloseModal.addEventListener('click', () => {
-        modalCreate.classList.add('hidden')
+        btnCloseModal.addEventListener('click', () => {
+            modalCreate.classList.add('hidden')
+    
+        })
+        btnCloseModall.addEventListener('click', () => {
+            modalCreate.classList.add('hidden')
+    
+        })
+        btnPub.addEventListener('click', async () => {
+    
+            const body = {
+                title: inputTitle.value,
+                content: inputContent.value,
+            }
+            await createPosts(body)
+            window.location.reload()
+        })
 
     })
-    btnCloseModall.addEventListener('click', () => {
-        modalCreate.classList.add('hidden')
 
-    })
-
-    btnPub.addEventListener('click', async () => {
-
-        const body = {
-            title: inputTitle.value,
-            content: inputContent.value,
-        }
-        await createPosts(body)
-        window.location.reload()
-    })
 
 }
 
@@ -129,7 +130,7 @@ async function renderizarPost() {
         }
         showModalEditPost(title, content, id)
         showModalDelete(id)
-        viewPost(user, createdAt, title, content, id)
+        viewPost(userData, createdAt, title, content, id)
     })
 }
 renderizarPost()
@@ -210,7 +211,7 @@ function viewPost(user, createdAt, title, content, id) {
 
     const modalSee = document.querySelector('#showPost')
     const modalSeeUserInfo = document.querySelector('.userInfo')
-    const modalSeeUserInfoTime = document.querySelector('.userInfo_time')
+    const imgUser = document.querySelector('.imgUser')
     const modalSeeH2 = document.querySelector('.modal_h2')
     const modalSeeText = document.querySelector('.modal_post_text')
     const btnSee = document.getElementById(`view-${id}`)
@@ -220,8 +221,8 @@ function viewPost(user, createdAt, title, content, id) {
         btnSee.addEventListener('click', (evt) => {
             evt.preventDefault()
             modalSee.classList.remove('hidden')
-            modalSeeUserInfo.innerText = user
-            modalSeeUserInfoTime.innerText = createdAt
+            imgUser.src = user.avatar
+            modalSeeUserInfo.innerText = `${user.username} | ${new Date(createdAt).toLocaleString()}`
             modalSeeH2.innerText = title
             modalSeeText.innerText = content
             btnEscape.addEventListener('click',evt=> modalSee.classList.add('hidden'))
