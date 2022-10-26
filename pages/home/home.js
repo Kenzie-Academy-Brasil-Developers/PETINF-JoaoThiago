@@ -183,6 +183,7 @@ function showModalDelete(id) {
     const closeModalx = document.querySelector('.delete_esc_btn')
     const closeModalCancel = document.querySelector('.delete_esc_btn_cancel')
     const yesBtn = document.querySelector('.yesBtn')
+    const miniModalSucess = document.querySelector('.sucess')
 
     if (deleteBtn !== null) {
         deleteBtn.addEventListener('click', (evt) => {
@@ -192,6 +193,7 @@ function showModalDelete(id) {
                 evt.preventDefault()
                 deletePost(id)
             })
+            miniModalSucess.classList.remove('hidden')
         })
         closeModalx.addEventListener('click', (evt) => {
             evt.preventDefault()
