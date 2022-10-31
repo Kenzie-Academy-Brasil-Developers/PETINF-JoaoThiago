@@ -16,6 +16,7 @@ export async function createUser(body) {
             // btnSpinner()
             const modalCall = document.querySelector('.sucess')
             modalCall.classList.remove('hidden')
+            btnSpinner()     
             setTimeout(() => {
                 window.location.replace('/index.html')
             }, 4000)
@@ -144,6 +145,7 @@ export async function deletePost(id) {
         })
         if(request.ok){
             window.location.reload()
+            
         }
         const resp = await request.json()       
         return resp

@@ -215,6 +215,12 @@ input {
 .spinnerSplendi {
   animation: gira 1.5s infinite;
 }
+.btn_acess:disabled {
+  background-color: var(--gray300);
+}
+.btn_acess:disabled:hover {
+  background-color: var(--gray200);
+}
 
 @keyframes gira {
   0% {

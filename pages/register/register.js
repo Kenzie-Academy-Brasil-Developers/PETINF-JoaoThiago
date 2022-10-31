@@ -1,5 +1,6 @@
 // Desenvolva sua lógica aqui...//
-import { createUser} from "../../api.js";
+import { createUser } from "../../api.js";
+import { btnSpinner } from "../btnSpinner.js";
 
 // const user = {
 //     username: "koemenor",
@@ -16,7 +17,7 @@ function eventRegister() {
     // const elements = [...form.elements]
     // console.log(form)
     // console.log(elements)
-    form.addEventListener('submit', async (e)=> {
+    form.addEventListener('submit', async (e) => {
         e.preventDefault()
 
 
@@ -26,13 +27,28 @@ function eventRegister() {
             password: form[3].value,
             avatar: form[2].value
         }
+        function disabled() {
+        
+                const registerUser = document.getElementById("username").value
+                const registerEmail = document.getElementById("email").value
+                const registerPhoto = document.getElementById("avatar").value
+                const registerPass = document.getElementById("password").value
+                // const btnCadastro = document.getElementById("btnCadastro")
+                if(registerUser && registerEmail && registerPhoto && registerPass) {
+                    document.querySelector("#btnCadastro").disabled = false
+                    return
+                }
+                document.querySelector("#btnCadastro").disabled = true
+        
+        }
+        disabled()
         console.log(body)
 
         // elements.forEach((elem) => {
-            // if(elem.tagName == 'INPUT' && elem.value !== ''){
-            //     body[elem.id] = elem.value
-            // }
-          
+        // if(elem.tagName == 'INPUT' && elem.value !== ''){
+        //     body[elem.id] = elem.value
+        // }
+
         // })
         await createUser(body)
     })
@@ -54,7 +70,7 @@ function backToLoginBtn() {
         window.location.replace('/index.html')
 
     })
- 
+
 }
 backToLoginBtn()
 

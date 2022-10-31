@@ -138,6 +138,9 @@ renderizarPost()
 async function showModalEditPost(title, content, id) {
 
     const btnEdit = document.querySelector(`#edit-${id}`)
+    const miniModalSucess = document.querySelector('.sucess_edit')
+
+
     if (btnEdit !== null) {
         btnEdit.addEventListener('click', (e) => {
             e.preventDefault()
@@ -156,8 +159,12 @@ async function showModalEditPost(title, content, id) {
                     title: inputTitle.value,
                     content: inputContent.value,
                 }
-                await editPost(body, id)
-                window.location.reload()
+                miniModalSucess.classList.remove('hidden')
+
+                setTimeout(async() => {
+                    await editPost(body, id)
+                    window.location.reload()
+                    }, 2500)
             })
 
         })
@@ -191,9 +198,11 @@ function showModalDelete(id) {
             deleteModal.classList.remove('hidden')
             yesBtn.addEventListener('click', (evt) => {
                 evt.preventDefault()
-                deletePost(id)
+                miniModalSucess.classList.remove('hidden')
+                setTimeout(() => {
+                    deletePost(id)
+                }, 4000)
             })
-            miniModalSucess.classList.remove('hidden')
         })
         closeModalx.addEventListener('click', (evt) => {
             evt.preventDefault()

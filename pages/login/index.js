@@ -32,3 +32,16 @@ function loginUser() {
   })
 }
 loginUser()
+function disabled() {
+      
+  const registerEmail = document.getElementById("email").value
+  const registerPass = document.getElementById("password").value
+
+  if(registerUser && registerEmail && registerPhoto && registerPass) {
+      document.querySelector("#btnAcess").disabled = false
+      return
+  }
+  document.querySelector("#btnAcess").disabled = true
+
+}
+disabled()
